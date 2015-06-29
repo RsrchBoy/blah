@@ -5,10 +5,10 @@ package BLAH::Types;
 use MooseX::Types -declare => [ qw{ BLAHObject } ];
 
 #use MooseX::Types::LoadableClass
-#use MooseX::Types::Moose 'Object';
+use MooseX::Types::Moose 'Object';
 
 subtype BLAHObject,
-    as 'Object',
+    as Object,
     where { $_->isa('BLAH') },
 ;
 
