@@ -1,4 +1,5 @@
 requires "Moose" => "0";
+requires "Moose::Role" => "0";
 requires "namespace::autoclean" => "0.24";
 requires "perl" => "5.006";
 
