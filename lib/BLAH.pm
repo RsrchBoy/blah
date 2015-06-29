@@ -2,12 +2,37 @@ package BLAH;
 
 # ABSTRACT: Business Logic Adapter Helpers
 
+use Moose;
+use namespace::autoclean 0.24;
+
+=required_method execute
+
+This is the core of your BLAH.  It should implement your command -- whether
+embedded, a simple call/delegation to some other package, or hideously
+complex -- in its entirety.
+
+C<execute()> should die on failure, and return otherwise.
+
+=cut
+
+sub execute { confess 'unimplemented!' }
+
+__PACKAGE__->meta->make_immutable;
 !!42;
 __END__
 
 =head1 SYNOPSIS
 
-    # nothing -- this is just a stub package and documentation, at the moment
+    # to create a BLAH
+    package MyBiz::BLAH::SelfDestruct;
+
+    use Moose;
+    extends 'BLAH';
+
+    sub execute {
+        # ... black-box interface to poke at the right parts to start a warp
+        # core overload ...
+    }
 
 =head1 DESCRIPTION
 
