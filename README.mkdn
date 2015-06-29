@@ -8,11 +8,20 @@ BLAH - Business Logic Adapter Helpers
 
 # VERSION
 
-This document describes version 0.001 of BLAH - released June 27, 2015 as part of BLAH.
+This document describes version 0.001 of BLAH - released June 28, 2015 as part of BLAH.
 
 # SYNOPSIS
 
-    # nothing -- this is just a stub package and documentation, at the moment
+    # to create a BLAH
+    package MyBiz::BLAH::SelfDestruct;
+
+    use Moose;
+    extends 'BLAH';
+
+    sub execute {
+        # ... black-box interface to poke at the right parts to start a warp
+        # core overload ...
+    }
 
 # DESCRIPTION
 
@@ -33,6 +42,16 @@ business logic, regardless of where it may reside.
 Of course, providing the actual methods to invoke your logic is entirely your
 responsibility; we only seek to help keep things sane (in an insane world,
 most likely).
+
+# REQUIRED METHODS
+
+## execute
+
+This is the core of your BLAH.  It should implement your command -- whether
+embedded, a simple call/delegation to some other package, or hideously
+complex -- in its entirety.
+
+`execute()` should die on failure, and return otherwise.
 
 # BUGS
 
