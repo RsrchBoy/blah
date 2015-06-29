@@ -8,7 +8,7 @@ BLAH - Business Logic Adapter Helpers
 
 # VERSION
 
-This document describes version 0.001 of BLAH - released June 28, 2015 as part of BLAH.
+This document describes version 0.001 of BLAH - released June 29, 2015 as part of BLAH.
 
 # SYNOPSIS
 
@@ -52,6 +52,12 @@ embedded, a simple call/delegation to some other package, or hideously
 complex -- in its entirety.
 
 `execute()` should die on failure, and return otherwise.
+
+# SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+- [MooseX::Traitor](https://metacpan.org/pod/MooseX::Traitor)
 
 # BUGS
 

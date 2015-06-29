@@ -13,9 +13,12 @@ use Test::Moose::More;
     sub execute { }
 }
 
-validate_class TestClass => (
-    isa     => [ 'BLAH'    ],
-    methods => [ 'execute' ],
-);
+subtest 'rudimentary structural test' => sub {
+    validate_class TestClass => (
+        does    => [ 'MooseX::Traitor' ],
+        isa     => [ 'BLAH'            ],
+        methods => [ 'execute'         ],
+    );
+};
 
 done_testing;
