@@ -5,6 +5,8 @@ package BLAH;
 use Moose;
 use namespace::autoclean 0.24;
 
+with 'MooseX::Traitor';
+
 =required_method execute
 
 This is the core of your BLAH.  It should implement your command -- whether
@@ -55,5 +57,7 @@ responsibility; we only seek to help keep things sane (in an insane world,
 most likely).
 
 =head1 SEE ALSO
+
+MooseX::Traitor
 
 =cut
