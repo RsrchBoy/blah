@@ -4,8 +4,39 @@ package BLAH;
 
 use Moose;
 use namespace::autoclean 0.24;
+use Moose::Exporter;
+use Moose::Util;
+use B::Hooks::AtRuntime;
+
+use BLAH::Role::BLAH;
 
 with 'MooseX::Traitor';
+
+my ($import) = Moose::Exporter->build_import_methods(
+    install => [ qw{ init_meta unimport } ],
+    also    => 'Moose',
+
+    class_metaroles => {
+        # may as well stick this in while we're at it
+        class => [ 'MooseX::TraitFor::Meta::Class::BetterAnonClassNames' ],
+    },
+);
+
+sub import {
+    my $class = $_[0];
+
+    # not BLAH, but the class use'ing us.
+    my $target = scalar caller;
+
+    at_runtime {
+        # set up our inheritance...
+        Moose::Util::find_meta($target)->superclasses('BLAH');
+        # ...and consume the "interface" role.
+        Moose::Util::apply_all_roles($target, 'BLAH::Role::BLAH');
+    };
+
+    goto &$import;
+}
 
 =required_method execute
 
@@ -17,24 +48,18 @@ C<execute()> should die on failure, and return otherwise.
 
 =cut
 
-sub execute { confess 'unimplemented!' }
-
 __PACKAGE__->meta->make_immutable;
 !!42;
 __END__
 
 =head1 SYNOPSIS
 
-    # to create a BLAH
-    package MyBiz::BLAH::SelfDestruct;
+    # Create a BLAH!
+    package MyApp::BLAH::Frobnicator;
 
-    use Moose;
-    extends 'BLAH';
+    use BLAH;
 
-    sub execute {
-        # ... black-box interface to poke at the right parts to start a warp
-        # core overload ...
-    }
+    sub execute { ... scary things ... }
 
 =head1 DESCRIPTION
 
@@ -58,6 +83,7 @@ most likely).
 
 =head1 SEE ALSO
 
+BLAH::Role::BLAH
 MooseX::Traitor
 
 =cut

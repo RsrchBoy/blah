@@ -1,5 +1,8 @@
+requires "B::Hooks::AtRuntime" => "0";
 requires "Moose" => "0";
+requires "Moose::Exporter" => "0";
 requires "Moose::Role" => "0";
+requires "Moose::Util" => "0";
 requires "MooseX::Traitor" => "0";
 requires "MooseX::Types" => "0";
 requires "MooseX::Types::Moose" => "0";
@@ -25,7 +28,7 @@ on 'configure' => sub {
 };
 
 on 'develop' => sub {
-  requires "Dist::Zilla::PluginBundle::RSRCHBOY" => "0.062";
+  requires "Dist::Zilla::PluginBundle::RSRCHBOY" => "0.062_01";
   requires "Pod::Coverage::TrustPod" => "0";
   requires "Test::EOL" => "0";
   requires "Test::More" => "0.88";
