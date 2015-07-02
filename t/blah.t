@@ -13,17 +13,17 @@ use Test::Moose::More;
 
 subtest 'rudimentary structural test' => sub {
     validate_class BLAH => (
-        does    => [ 'MooseX::Traitor' ],
-        isa     => [ 'Moose::Object'   ],
-        methods => [ 'with_traits'     ],
+        does    => [ 'MooseX::Traitor', 'BLAH::Role::BLAH' ],
+        isa     => [ 'Moose::Object'                       ],
+        methods => [ 'with_traits'                         ],
     );
 };
 
 subtest 'rudimentary structural test of a BLAH subclass' => sub {
     validate_class TestBLAH => (
-        does    => [ 'MooseX::Traitor', 'BLAH::Role::BLAH' ],
         isa     => [ 'BLAH'                                ],
         methods => [ 'execute'                             ],
     );
 };
+
 done_testing;

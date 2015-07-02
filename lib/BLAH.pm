@@ -6,36 +6,32 @@ use Moose;
 use namespace::autoclean 0.24;
 use Moose::Exporter;
 use Moose::Util;
-use B::Hooks::AtRuntime;
+use MooseX::AbstractMethod;
+
+use MooseX::Util::Meta::Class;
 
 use BLAH::Role::BLAH;
 
-with 'MooseX::Traitor';
+with
+    'MooseX::Traitor',
+    ;
 
-my ($import) = Moose::Exporter->build_import_methods(
-    install => [ qw{ init_meta unimport } ],
+Moose::Exporter->setup_import_methods(
     also    => 'Moose',
-
-    class_metaroles => {
-        # may as well stick this in while we're at it
-        class => [ 'MooseX::TraitFor::Meta::Class::BetterAnonClassNames' ],
-    },
 );
 
-sub import {
-    my $class = $_[0];
+sub init_meta {
+    my $class = shift @_;
+    my %args = @_;
 
-    # not BLAH, but the class use'ing us.
-    my $target = scalar caller;
+    ### $class
+    ### %args
 
-    at_runtime {
-        # set up our inheritance...
-        Moose::Util::find_meta($target)->superclasses('BLAH');
-        # ...and consume the "interface" role.
-        Moose::Util::apply_all_roles($target, 'BLAH::Role::BLAH');
-    };
+    ### create metaclass and push BLAH into superclasses for: $args{for_class}
+    my $meta = Moose->init_meta(@_, metaclass => 'MooseX::Util::Meta::Class');
+    $meta->superclasses('BLAH');
 
-    goto &$import;
+    return $meta;
 }
 
 =required_method execute
@@ -47,6 +43,10 @@ complex -- in its entirety.
 C<execute()> should die on failure, and return otherwise.
 
 =cut
+
+abstract 'execute';
+
+with 'BLAH::Role::BLAH';
 
 __PACKAGE__->meta->make_immutable;
 !!42;
