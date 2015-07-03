@@ -8,7 +8,7 @@ BLAH - Business Logic Adapter Helpers
 
 # VERSION
 
-This document describes version 0.001 of BLAH - released June 30, 2015 as part of BLAH.
+This document describes version 0.001 of BLAH - released July 02, 2015 as part of BLAH.
 
 # SYNOPSIS
 
