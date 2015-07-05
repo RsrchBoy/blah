@@ -81,6 +81,14 @@ Of course, providing the actual methods to invoke your logic is entirely your
 responsibility; we only seek to help keep things sane (in an insane world,
 most likely).
 
+=head1 SUBCLASSING
+
+If you wish to create a subclass of this class to use as the base for your BLAH, note
+that you should B<not> make that subclass immutable unless it also implements
+the execute() method.
+
+(See L<MooseX::AbstractMethod> for details.)
+
 =head1 SEE ALSO
 
 BLAH::Role::BLAH
