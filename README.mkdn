@@ -8,7 +8,7 @@ BLAH - Business Logic Adapter Helpers
 
 # VERSION
 
-This document describes version 0.001 of BLAH - released July 02, 2015 as part of BLAH.
+This document describes version 0.001 of BLAH - released July 05, 2015 as part of BLAH.
 
 # SYNOPSIS
 
@@ -48,6 +48,22 @@ embedded, a simple call/delegation to some other package, or hideously
 complex -- in its entirety.
 
 `execute()` should die on failure, and return otherwise.
+
+## name
+
+The "name" of this BLAH.  BLAH implementers are left to define this on their own,
+but it is anticipated that the name here will be something like the package name with
+a namespace prefix removed; e.g. if your BLAH namespace is "Organic::Produce::BLAH"
+and the BLAH package is "Organic::Produce::BLAH::Relabel::Pesticides", then the BLAH name would be
+\-- surprise! -- "Relabel::Pesticides".
+
+# SUBCLASSING
+
+If you wish to create a subclass of this class to use as the base for your BLAH, note
+that you should **not** make that subclass immutable unless it also implements
+the execute() method.
+
+(See [MooseX::AbstractMethod](https://metacpan.org/pod/MooseX::AbstractMethod) for details.)
 
 # SEE ALSO
 
