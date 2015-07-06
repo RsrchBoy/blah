@@ -42,9 +42,18 @@ complex -- in its entirety.
 
 C<execute()> should die on failure, and return otherwise.
 
+=required_method name
+
+The "name" of this BLAH.  BLAH implementers are left to define this on their own,
+but it is anticipated that the name here will be something like the package name with
+a namespace prefix removed; e.g. if your BLAH namespace is "Organic::Produce::BLAH"
+and the BLAH package is "Organic::Produce::BLAH::Relabel::Pesticides", then the BLAH name would be
+-- surprise! -- "Relabel::Pesticides".
+
 =cut
 
 abstract 'execute';
+abstract 'name';
 
 with 'BLAH::Role::BLAH';
 
