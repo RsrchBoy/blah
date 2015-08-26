@@ -83,7 +83,7 @@ feature.
 
 # AUTHOR
 
-Chris Weyl <cweyl@alumni.drew.edu>
+Chris Weyl &lt;cweyl@alumni.drew.edu>
 
 ## I'm a material boy in a material world
 

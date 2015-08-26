@@ -19,6 +19,7 @@ on 'test' => sub {
   requires "Test::Moose::More" => "0.030";
   requires "Test::More" => "0.94";
   requires "aliased" => "0";
+  requires "blib" => "1.01";
   requires "perl" => "5.006";
   requires "strict" => "0";
   requires "warnings" => "0";
